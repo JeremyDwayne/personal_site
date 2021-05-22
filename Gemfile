@@ -68,3 +68,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'friendly_id', '~> 5.4'
 
 gem 'impressionist', '~> 2.0'
+
+group :development, :test do
+  gem 'factory_bot_rails'
+end

@@ -96,6 +96,11 @@ GEM
       http_parser.rb (~> 0.6.0)
     erubi (1.10.0)
     eventmachine (1.2.7)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.15.0)
     formatador (0.2.5)
     friendly_id (5.4.2)
@@ -321,6 +326,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  factory_bot_rails
   friendly_id (~> 5.4)
   guard
   guard-livereload (~> 2.5)
