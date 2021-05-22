@@ -17,21 +17,19 @@ require("trix")
 require("@rails/actiontext")
 
 import Sortable from 'sortablejs'
-
-import '../stylesheets/application';
+import '../stylesheets/application'
 
 document.addEventListener('turbolinks:load', () => {
   document.addEventListener('click', () => {
     let element = event.target.closest('.paragraph-content')
-    if (!element) return;
+    if (!element) return
 
     element.classList.add('d-none')
     element.nextElementSibling.classList.remove('d-none')
   })
 
   document.addEventListener('click', () => {
-    if (!event.target.matches('.cancel'))
-      return;
+    if (!event.target.matches('.cancel')) return
     event.preventDefault()
 
     let element = event.target.closest('.paragraph-form')
@@ -40,7 +38,7 @@ document.addEventListener('turbolinks:load', () => {
   })
 
   let element = document.getElementById('elements')
-    Sortable.create(elements, { animation: 150 })
-  })
+  Sortable.create(elements, { animation: 150 })
+})
 
 import "controllers"

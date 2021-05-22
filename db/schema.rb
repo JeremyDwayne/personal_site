@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_023552) do
+ActiveRecord::Schema.define(version: 2021_05_22_010440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,13 +65,13 @@ ActiveRecord::Schema.define(version: 2021_05_21_023552) do
     t.index ["reset_password_token"], name: "index_authors_on_reset_password_token", unique: true
   end
 
-  create_table "post_elements", force: :cascade do |t|
+  create_table "elements", force: :cascade do |t|
     t.string "element_type"
     t.bigint "post_id", null: false
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_post_elements_on_post_id"
+    t.index ["post_id"], name: "index_elements_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -87,6 +87,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_023552) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "post_elements", "posts"
+  add_foreign_key "elements", "posts"
   add_foreign_key "posts", "authors"
 end
