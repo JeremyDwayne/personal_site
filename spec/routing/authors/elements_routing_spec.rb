@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ElementsController, type: :routing do
+RSpec.describe Authors::ElementsController, type: :routing do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/elements').to route_to('elements#index')
