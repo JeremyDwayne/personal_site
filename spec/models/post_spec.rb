@@ -4,6 +4,9 @@ RSpec.describe Post, type: :model do
   # TODO: extract this into a fixture or test helper file
   current_author = Author.first_or_create!(email: 'test@test.com', password: 'password',
                                            password_confirmation: 'password')
+  # before :all do
+  #   current_author = create(:author)
+  # end
 
   it 'has a title' do
     post = Post.new(title: '', description: 'a' * 50, author: current_author)
