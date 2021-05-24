@@ -22,61 +22,63 @@ ActiveStorage.start()
 const Trix = require("trix")
 require("@rails/actiontext")
 
-Trix.config.blockAttributes.heading1.tagName = "h3";
 
 import Sortable from 'sortablejs'
-
+import "controllers"
 import '../stylesheets/application'
 
 document.addEventListener('turbolinks:load', () => {
-
   var ctx = document.getElementById('page-views');
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: JSON.parse(ctx.dataset.labels),
-      datasets: [{
-        label: "Page Views",
-        data: JSON.parse(ctx.dataset.data),
-        borderWidth: 1
-      }]
-    },
-  });
+  if (ctx) {
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: JSON.parse(ctx.dataset.labels),
+        datasets: [{
+          label: "Page Views",
+          data: JSON.parse(ctx.dataset.data),
+          borderWidth: 1
+        }]
+      },
+    });
+  }
 
   var ctx = document.getElementById('unique-page-views');
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: JSON.parse(ctx.dataset.labels),
-      datasets: [{
-        label: "Unique Page Views",
-        data: JSON.parse(ctx.dataset.data),
-        borderWidth: 1
-      }]
-    },
-  });
+  if (ctx) {
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: JSON.parse(ctx.dataset.labels),
+        datasets: [{
+          label: "Unique Page Views",
+          data: JSON.parse(ctx.dataset.data),
+          borderWidth: 1
+        }]
+      },
+    });
+  }
 
-  document.addEventListener('click', () => {
+  document.addEventListener('click', (event) => {
     let element = event.target.closest('.paragraph-content')
     if (!element) return
 
     element.classList.add('d-none')
     element.nextElementSibling.classList.remove('d-none')
-  })
+  });
 
-  document.addEventListener('click', () => {
-    if (!event.target.matches('.cancel'))
-      return event.preventDefault()
+  document.addEventListener('click', (event) => {
+    if (!event.target.matches('.cancel')) return
+
+    event.preventDefault()
 
     let element = event.target.closest('.paragraph-form')
     element.classList.add('d-none')
     element.previousElementSibling.classList.remove('d-none')
-  })
+  });
 
-  let elements = document.getElementById('elements')
+  let element = document.getElementById('elements')
   Sortable.create(elements, {
     animation: 150
-  })
-})
+  });
 
-import "controllers"
+})

@@ -1,28 +1,30 @@
 module Authors
   class ElementsController < AuthorsController
     before_action :set_post
-    before_action :set_element, only: [:update, :destroy]
+    before_action :set_element, only: %i[update destroy]
 
     # POST /elements
     def create
       @element = @post.elements.build(element_params)
 
-      notice = @element.save ? @element.errors.full_messages.join(". ") : nil
+      notice = @element.save ? @element.errors.full_messages.join('. ') : nil
       redirect_to edit_post_path(@post), notice: notice
     end
 
     # PATCH/PUT /elements/1
     def update
       @element.update(element_params)
+      redirect_to edit_post_path(@element.post) if @element.element_type != 'paragraph'
     end
 
     # DELETE /elements/1
     def destroy
       @element.destroy
-      redirect_to edit_post_path(@element.post) , notice: 'Element was successfully destroyed.'
+      redirect_to edit_post_path(@element.post), notice: 'Element was successfully destroyed.'
     end
 
     private
+
     def set_post
       @post = current_author.posts.find(params[:post_id])
     end
