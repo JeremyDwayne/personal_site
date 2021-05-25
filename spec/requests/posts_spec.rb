@@ -26,7 +26,7 @@ RSpec.describe '/posts', type: :request do
     {
       'id' => '1',
       'title' => 'A Valid Title',
-      'description' => 'This is a valid index, do not be fooled mere mortal, for I am longer than 50 characters',
+      'description' => 'a' * 50,
       'author' => current_author
     }
   end
@@ -44,6 +44,7 @@ RSpec.describe '/posts', type: :request do
       post = Post.new(valid_attributes)
       post.author = current_author
       post.save
+      @posts = Post.all
       get posts_url
       expect(response).to be_successful
     end
@@ -98,7 +99,12 @@ RSpec.describe '/posts', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          'id' => '1',
+          'title' => 'A Valid Title',
+          'description' => 'b' * 50,
+          'author' => current_author
+        }
       end
 
       it 'updates the requested post' do
@@ -107,6 +113,7 @@ RSpec.describe '/posts', type: :request do
         post.save
         patch post_url(post), params: { post: new_attributes }
         post.reload
+        # Not sure how to test updates really
         skip('Add assertions for updated state')
       end
 
@@ -116,7 +123,7 @@ RSpec.describe '/posts', type: :request do
         post.save
         patch post_url(post), params: { post: new_attributes }
         post.reload
-        expect(response).to redirect_to(post_url(post))
+        expect(response).to redirect_to(edit_post_url(post))
       end
     end
 

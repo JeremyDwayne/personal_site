@@ -1,6 +1,6 @@
 module Authors
   class PostsController < AuthorsController
-    before_action :set_post, only: [:edit, :update, :destroy]
+    before_action :set_post, :only => [:edit, :update, :destroy]
 
     # GET /posts
     def index
@@ -40,7 +40,7 @@ module Authors
     # DELETE /posts/1
     def destroy
       @post.destroy
-      redirect_to posts_url, notice: 'Post was successfully destroyed.'
+      redirect_to posts_url, :notice => 'Post was successfully destroyed.'
     end
 
     private

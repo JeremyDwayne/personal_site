@@ -9,8 +9,8 @@ class Post < ApplicationRecord
 
   has_one_attached :header_image
 
-  validates_presence_of :title, :description
-  validates_length_of :description, within: 50..250
+  validates :title, :description, presence: true
+  validates :description, length: { within: 50..250 }
 
   scope :published, lambda {
     where(published: true)
