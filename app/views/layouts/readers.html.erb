@@ -14,10 +14,40 @@
   </head>
 
   <body class="bg-light readers <%= controller_name %> <%= action_name %>">
+    <header>
+      <div class="container overlay">
+        <h1>JeremyDwayne</h1>
+        <h3>Software Engineer Who Needs a Coffee Sponsorship.</h3>
+      </div>
+    </header>
     <div class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <%= yield %>
+      <main>
+        <%= yield %>
+      </main>
     </div>
+    <footer>
+      <div class="container">
+        <div class="footer-socials-section penci-social-colored">
+          <ul class="footer-socials">
+            <li><a href="https://twitter.com/JeremyDwayne" aria-label="Twitter" rel="noreferrer" target="_blank"><i class="penci-faicon fab fa-twitter"></i><span>Twitter</span></a></li>
+            <li><a href="https://instagram.com/JeremyDwayne" aria-label="Instagram" rel="noreferrer" target="_blank"><i class="penci-faicon fab fa-instagram"></i><span>Instagram</span></a></li>
+            <li><a href="https://youtube.com/JeremyDwayne" aria-label="Youtube" rel="noreferrer" target="_blank"><i class="penci-faicon fab fa-youtube"></i><span>Youtube</span></a></li>
+            <li><a href="https://github.com/JeremyDwayne" aria-label="Github" rel="noreferrer" target="_blank"><i class="penci-faicon fab fa-github"></i><span>Github</span></a></li>
+            <li><a href="https://twitch.tv/JeremyDwayne" aria-label="Twitch" rel="noreferrer" target="_blank"><i class="penci-faicon fab fa-twitch"></i><span>Twitch</span></a></li>
+            <li><a href="https://discord.gg/8ZfePJySrk" aria-label="Discord" rel="noreferrer" target="_blank"><i class="fab fa-discord"></i><span>Discord</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-logo-copyright footer-not-logo">
+
+
+          <div id="footer-copyright">
+            <p>&copy;2021 JeremyDwayne</p>
+          </div>
+          <div class="go-to-top-parent"><a href="#" class="go-to-top"><span><i class="penci-faicon fas fa-angle-up"></i> <br>Back To Top</span></a></div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
