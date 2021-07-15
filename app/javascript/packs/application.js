@@ -76,7 +76,7 @@ document.addEventListener('turbolinks:load', () => {
     element.previousElementSibling.classList.remove('d-none')
   });
 
-  let element = document.getElementById('elements')
+  let elements = document.getElementById('elements')
   Sortable.create(elements, {
     animation: 150
   });
